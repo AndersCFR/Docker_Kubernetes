@@ -1,0 +1,90 @@
+# Guía Comandos Docker
+
+> ## Manejo general de Docker
+
+>> docker
+>>> permite visualizar la guía de comandos
+
+>> docker version
+>>> visualización de versión
+
+>> docker COMMAND --help
+>>> permite ver ayuda de un comando de docker
+
+>> docker run NOMBRE_IMAGEN
+>>> permite crear un contenedor, dispone de muchas opciones
+
+>> docker pull NOMBRE_IMAGEN
+>>> permite descargar un contenedor desde docker hub
+
+>> docker images
+>>> muestra todas las imágenes
+
+>> docker ps
+>>> muestra los contenedores
+
+>> docker ps -a
+>>> muestra todos los contenedores, incluyendo los que está apagados
+
+>> docker ps -l
+>>> muestra el último contenedor que se ha ejecutado o el último sobre el que se han realizado cambios
+
+>> docker -n NUMERO
+>>> muestra los últimos n (NÚMERO) de contenedores sobre los que se ha hecho algún cambio.
+
+>> docker ps -q
+>>> muestra solo el id de los contenedores (docker ps -a -q) mostraría el id de todos
+
+>> docker ps -a -f name=epi
+>>> muestra los contenedores usando el filtro del nombre.
+
+<br>
+
+> ## Creación, ejecución y eliminación de contenedores
+>> docker start NOMBRE_CONTENEDOR
+>>> ejecuta un contenedor ya creado
+
+>> docker start -i NOMBRE_CONTENEDOR
+>>> ejecuta en modo interactivo un contenedor interactivo
+
+>> docker run --name NOMBRE_CONTENEDOR NOMBRE_IMAGEN
+>>> crea un contenedor con un nombre específico
+
+>> docker stop NOMBRE_CONTENEDOR
+>>> detiene la ejecución de un contenedor
+
+>> docker run --name NOMBRE_CONTENEDOR -it NOMBRE_IMAGEN
+>>> crea un contendor interactivo (ejecutandose permanentemente hasta hacer exit) con un contenedor interactivo
+
+>> docker run -d nginx
+>>> ejecutar en background (detached) un contenedor (sin terminal activa)
+>>> para que un contenedor se ejecute en background debe estar preparado para trabajar en background
+
+>> docker run --name ubuntu1(NAME) -d -it ubuntu
+>>> forzamos a ejecutar un contenedor en modo background
+
+>> docker run --name apache2 -d httpd:alpine
+>>> con httpd, nos permite especificar el tag (versión) que deseamos de la imagen
+
+>> docker rm 93d6b
+>>> eliminar un contenedor dando las iniciales de su id o su nombre
+
+>> docker rmi 8f1369cb0804
+>>> eliminar una imagen dado su id
+>>> no se permitirá eliminar imagenes que tengan un contenedor asociado
+
+>> docker exec NombreContenedor comandoAEjecutar
+>>> Permite ejecutar un comando en el contenedor
+
+>> docker exec -it NombreContenedorLinux bash
+>>> Permite ingresar a la terminal de un contenedor de manera interactiva (para salir uso exit)
+
+>> docker attach ubuntu2
+>>> Permite enlazarme a la salida de un contenedor en ese momento, nos muestra q está haciendo el contenedor en ese instante
+
+<br>
+
+> ## Logs y matar proceso
+
+>> docker logs IdContenedor
+>>> Permite ver en tiempo real los comportamientos del contenedor
