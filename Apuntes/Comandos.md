@@ -41,6 +41,7 @@
 <br>
 
 > ## Creación, ejecución y eliminación de contenedores
+
 >> docker start NOMBRE_CONTENEDOR
 >>> ejecuta un contenedor ya creado
 
@@ -84,7 +85,42 @@
 
 <br>
 
-> ## Logs y matar proceso
+> ## Logs, matar proceso, información de contenedores y sistema
 
 >> docker logs IdContenedor
 >>> Permite ver en tiempo real los comportamientos del contenedor
+
+>> docker logs 6330 --tail 10
+>>> Ver solo un n número de líneas
+
+>> docker logs 6330 -f
+>>> Muestra los logs de forma infinita
+
+>> docker kill IdContenedor
+>>> Mata el proceso del contenedor
+
+>> docker top NombreContenedor
+>>> muestra los procesos que mayor consumo generan
+
+>> docker stats NombreContenedor
+>>> Brinda información de consumo de los recursos de forma continua
+
+>> docker inspect IdContenedor
+>>> Nos muestra la configuración del contenedor
+>>> También funciona para imágenes
+
+>> docker inspect IdContenedor > nombreArchivo.json (txt)
+>>> Guarda la información de un contenedor en un archivo de texto
+>>> También funciona para imágenes
+
+>> docker system info
+>>> Muestra informacion de nuestra instalación de docker
+
+>> docker system df
+>>> Muestra el tamaño en disco que ocupan las imágenes, contenedores y volúmenes
+
+>> docker system events
+>>> Mostrará la lista de eventos que sucedan en nuestro docker
+
+>> docker system prune
+>>> Permite purgar docker, elimina todos los contenedores detenidos, redes sin usar, imagenes no usadas y limpia la caché, **tener cuidado**
