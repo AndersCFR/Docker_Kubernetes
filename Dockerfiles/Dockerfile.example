@@ -1,0 +1,19 @@
+#APM Node image based on node js official image
+FROM node:18-alpine
+
+# You can specify Elastic Agent url and enrollment-token
+ENV AGENT_URL https://973bad614a614398a7557836eaf35622.fleet.us-central1.gcp.cloud.es.io:443
+ENV ENROLLMENT_TOKEN NVI1MG5ZVUJIdFljeGUtd05qUUo6OHN5LWJOeEJUc0tucTB4WGpfSEJ3dw==
+
+#Set work directory
+WORKDIR /usr/src
+
+#Install elastic agent for linux
+RUN apk add curl
+RUN apk add tar
+RUN curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-8.6.0-linux-x86_64.tar.gz
+RUN tar xzvf elastic-agent-8.6.0-linux-x86_64.tar.gz
+WORKDIR /usr/src/elastic-agent-8.6.0-linux-x86_64
+
+#Enroll agent to elastic fleet (Policy Anget 2 - only system metrics index)
+CMD [ "./elastic-agent","install --url=${AGENT_URL} --enrollment-token=${ENROLLMENT_TOKEN}" ] 
