@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  creationTimestamp: "2024-06-08T05:19:47Z"
+  creationTimestamp: "2025-01-11T18:13:09Z"
   labels:
     version: v1
     zone: prod
   name: nginx
   namespace: default
-  resourceVersion: "16048"
-  uid: 9a660ed2-c68e-4f99-982d-93e7cf8b4e87
+  resourceVersion: "2024"
+  uid: 41b82fa3-2cef-488e-9cc7-c528ca07bf17
 spec:
   containers:
   - image: apasoft/nginx:v1
@@ -19,11 +19,11 @@ spec:
     terminationMessagePolicy: File
     volumeMounts:
     - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-      name: kube-api-access-r2v8d
+      name: kube-api-access-j7dhp
       readOnly: true
   dnsPolicy: ClusterFirst
   enableServiceLinks: true
-  nodeName: cluster-desa-m02
+  nodeName: minikube
   preemptionPolicy: PreemptLowerPriority
   priority: 0
   restartPolicy: Always
@@ -42,7 +42,7 @@ spec:
     operator: Exists
     tolerationSeconds: 300
   volumes:
-  - name: kube-api-access-r2v8d
+  - name: kube-api-access-j7dhp
     projected:
       defaultMode: 420
       sources:
@@ -63,23 +63,27 @@ spec:
 status:
   conditions:
   - lastProbeTime: null
-    lastTransitionTime: "2024-06-08T05:19:47Z"
+    lastTransitionTime: "2025-01-11T18:13:19Z"
+    status: "True"
+    type: PodReadyToStartContainers
+  - lastProbeTime: null
+    lastTransitionTime: "2025-01-11T18:13:09Z"
     status: "True"
     type: Initialized
   - lastProbeTime: null
-    lastTransitionTime: "2024-06-08T05:19:57Z"
+    lastTransitionTime: "2025-01-11T18:13:19Z"
     status: "True"
     type: Ready
   - lastProbeTime: null
-    lastTransitionTime: "2024-06-08T05:19:57Z"
+    lastTransitionTime: "2025-01-11T18:13:19Z"
     status: "True"
     type: ContainersReady
   - lastProbeTime: null
-    lastTransitionTime: "2024-06-08T05:19:47Z"
+    lastTransitionTime: "2025-01-11T18:13:09Z"
     status: "True"
     type: PodScheduled
   containerStatuses:
-  - containerID: docker://bf4dbc84f01115188bc364030bc8c2e6d370798c3742e30382a1d1604ce227a4
+  - containerID: docker://3df6a7ca48a90bce172591167ae69328f344905a1cf69051d9c2934326cab38d
     image: apasoft/nginx:v1
     imageID: docker-pullable://apasoft/nginx@sha256:45b3154692ef8073f8b22dd70012fedf6e25c9a1dda7aa83b27ac28332a15e64
     lastState: {}
@@ -89,11 +93,18 @@ status:
     started: true
     state:
       running:
-        startedAt: "2024-06-08T05:19:56Z"
-  hostIP: 192.168.58.3
+        startedAt: "2025-01-11T18:13:19Z"
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-j7dhp
+      readOnly: true
+      recursiveReadOnly: Disabled
+  hostIP: 192.168.49.2
+  hostIPs:
+  - ip: 192.168.49.2
   phase: Running
-  podIP: 10.244.1.4
+  podIP: 10.244.0.4
   podIPs:
-  - ip: 10.244.1.4
+  - ip: 10.244.0.4
   qosClass: BestEffort
-  startTime: "2024-06-08T05:19:47Z"
+  startTime: "2025-01-11T18:13:09Z"
